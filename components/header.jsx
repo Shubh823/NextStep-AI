@@ -13,11 +13,11 @@ function Header() {
       <nav className='container mx-auto px-4 h-16 items-center flex justify-between'>
         <Link href="/">
           <Image
-            src="/logo.png"
+            src="/logo3.png"
             alt="Logo"
-            width={200}
-            height={60}
-            className="cursor-pointer h-12 py-1 w-auto object-contain"
+            width={140}
+            height={80}
+            className="cursor-pointer h-12 md:h-16 py-1 w-auto object-contain"
           />
         </Link>
 
