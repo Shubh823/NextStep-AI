@@ -6,8 +6,11 @@ import React from 'react'
 import { Button } from './ui/button'
 import { ChevronDown, FileText, GraduationCap, Layout, LayoutDashboard, PenBox, StarIcon } from 'lucide-react'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu'
+import { checkUser } from '@/lib/checkUser'
 
-function Header() {
+const Header = async () => {
+
+  await checkUser();
   return (
     <header className='fixed top-0 w-full border-b bg-background/80 backdrop-blur-md z-50 supports-[backdrop-filter]:bg-background/60 '>
       <nav className='container mx-auto px-4 h-16 items-center flex justify-between'>
