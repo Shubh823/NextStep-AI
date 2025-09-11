@@ -11,6 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Download, Save } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Controller, useForm } from "react-hook-form"
+import EntryForm from "./entry-form"
 
 const ResumeBuilder = ({ initialContent }) => {
     const [activeTab, setActiveTab] = useState("edit")
@@ -167,12 +168,14 @@ const ResumeBuilder = ({ initialContent }) => {
                             name="skills"
                             control={control}
                             render={({field})=>{
-                                <Textarea 
-                                {...field}
-                                className="h-32"
-                                placeholder="List your key skills, separated by commas..."
-                                error={errors.summary}
-                            />
+                                return (
+                                    <Textarea 
+                                        {...field}
+                                        className="h-32"
+                                        placeholder="List your key skills, separated by commas..."
+                                        error={errors.skills}
+                                    />
+                                )
                             }}
                             />
                             {errors?.skills && (
@@ -182,14 +185,18 @@ const ResumeBuilder = ({ initialContent }) => {
                             )}
                         </div>
 
-
                         <div className="space-y-2">
                            <h3 className="text-lg font-medium">Work Experience</h3>
                             <Controller 
                             name="experience"
                             control={control}
                             render={({field})=>{
-                                
+                                return (
+                                    <EntryForm 
+                                        type="Experience"
+                                        entries={field.value}
+                                        onChange={field.onChange} />
+                                )
                             }}
                             />
                             {errors?.experience && (
@@ -206,9 +213,15 @@ const ResumeBuilder = ({ initialContent }) => {
                             name="education"
                             control={control}
                             render={({field})=>{
-                                
+                                return (
+                                    <EntryForm 
+                                        type="Education"
+                                        entries={field.value}
+                                        onChange={field.onChange} />
+                                )
                             }}
                             />
+                            
                             {errors?.education && (
                                 <p className="text-sm text-red-500 ">
                                     {errors.education.message}
@@ -224,9 +237,15 @@ const ResumeBuilder = ({ initialContent }) => {
                             name="projects"
                             control={control}
                             render={({field})=>{
-                                
+                                return (
+                                <EntryForm 
+                                 type="Projects"
+                                 entries={field.value}
+                                 onChange={field.onChange} />
+                            )
                             }}
                             />
+                            
                             {errors?.projects && (
                                 <p className="text-sm text-red-500 ">
                                     {errors.projects.message}
