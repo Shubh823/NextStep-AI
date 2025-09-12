@@ -19,7 +19,7 @@ import { entrySchema } from "@/app/lib/schema";
 import { Sparkles, PlusCircle, X, Pencil, Save, Loader2 } from "lucide-react";
 import { improveWithAI } from "@/actions/resume";
 import { toast } from "sonner";
-import useFetch from "@/hooks/use-fetch";
+import useFetch from "@/hooks/useFetch";
 
 const formatDisplayDate = (dateString) => {
   if (!dateString) return "";
